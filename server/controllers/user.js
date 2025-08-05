@@ -326,7 +326,7 @@ exports.forgotPassword = (req, res, next) =>
               },
             });
             var mailOptions = {
-              from: "histoatlas3@gmail.com", 
+              from: mailInfos['auth_user'],
               to: targetMail, 
               subject: req.body.messageTitle, 
               text: mailContent

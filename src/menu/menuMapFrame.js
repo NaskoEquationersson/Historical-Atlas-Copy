@@ -10,7 +10,8 @@ class MenuMapFrame
    * @param {Number}           number                 The number of the element
    * @param {Boolean}          isUserMap              True if is user map
    */
-    constructor(map, idHtmlParent, number, isUserMap) {
+    constructor(map, idHtmlParent, number, isUserMap) 
+    {
         if(isUserMap) {
             this.displayUserMap(map, idHtmlParent, number, false);
         }
@@ -24,27 +25,41 @@ class MenuMapFrame
      * @param {Object}           map                    Map data
      * @param {String}           idHtmlParent           The html id of the element
      */
-    displayMap(map, idHtmlParent) {
+    displayMap(map, idHtmlParent) 
+    {
         let me = this;
 
-        let content = "<div class='map-frame'>";
         let categoryText = Dictionary.get('MAP_TYPE_' + map.category.toUpperCase());
 
-        content += `<p>[${map.lang.toUpperCase()}][${categoryText}] <b>${map.name}</b></p>
-        <p><i>${Dictionary.get('INDEX_MAP_CREATOR')} <b>${map.userName}</b></i></p>
-        <p><a href="histoAtlas.html?mapId=${map.id}&edit=false"><img class="icon-action" src="img/menu/eye-solid.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a>
-        <a href="histoAtlasMapbox.html?mapId=${map.id}"><img class="icon-action" src="img/menu/earth-africa-europe.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a>`;
+        let content = `<tr>`;
+        content += `<td>${map.lang.toUpperCase()}</td>`;
 
-        content += `<a href="histoAtlas.html?mapId=${map.id}"><img class="icon-action" src="img/menu/edit-solid.svg" title="${Dictionary.get('INDEX_MAP_EDIT_COPY')}" /></a>`;
+        if(categoryText != undefined) {
+            content += `<td>${categoryText}</td>`;
+        }
+        else {
+            content += `<td></td>`;
+        }
 
-        content += `<a><img class="iframe-publicmap" id="iframe-publicmap_${map.id}" src="img/menu/iframe.png" title="${Dictionary.get('INDEX_MAP_EXPORT_MAP')}" /></a>`;
-        
-        content += `</p></div>`;
-
+        content += `<td class="title-map"><b>${map.name}</b></td>`;
+        content += `<td class="user-map"><b>${map.userName}</b></td>`;
+        content += `<td class="date-map creation-date-col">${map.creationDate ? map.creationDate.toISOString().split("T")[0] : ""}</td>`;
+        content += `<td class="date-map edition-date-col">${map.updateDate ? map.updateDate.toISOString().split("T")[0] : ""}</td>`;
+        content += `<td class="icon-action-td"><a href="histoAtlas.html?mapId=${map.id}&edit=false"><img class="icon-action" src="img/menu/eye-solid.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a></td>`;
+        content += `<td class="icon-action-td"><a style="width:100%" href="histoAtlasMapbox.html?mapId=${map.id}"><img class="icon-action" src="img/menu/earth-africa-europe.svg" title="${Dictionary.get('INDEX_MAP_VIEW_3D')}" /></a></td>`;
+        if(map.publicEditable)
+        {
+            content += `<td class="icon-action-td edition-col"><a href="histoAtlas.html?mapId=${map.id}"><img class="icon-action" src="img/menu/edit-solid.svg" title="${Dictionary.get('INDEX_MAP_EDIT_COPY')}" /></a></td>`;
+        }
+        else {
+            content += `<td class="edition-col"></td>`;
+        }
+        content += `<td class="icon-action-td iframe-col"><a><img class="iframe-publicmap" id="iframe-publicmap_${map.id}" src="img/menu/iframe.png" title="${Dictionary.get('INDEX_MAP_EXPORT_MAP')}" /></a></td>`;
+        content += `</tr>`;
         $("#" + idHtmlParent).append(content);
 
         // Manage iframe
-        $(`#iframe-publicmap_${map.id}`).click(function() 
+        $(`#iframe-publicmap_${map.id}`).on("click",function() 
         {
             me.copyIFrame(map.id);
         });
@@ -57,53 +72,70 @@ class MenuMapFrame
      * @param {Number}           number                 The number of the element
      * @param {Boolean}          update                 True if update (is false for creation)
      */
-    displayUserMap(map, idHtmlParent, number, update) {
-
+    displayUserMap(map, idHtmlParent, number, update) 
+    {
         let me = this;
-
-        // Create div (map-frame)
         if(!update) {
-            let content = `<div class='map-frame' id='map-frame-user_${number}'></div>`;
+            let content = `<tr id='map-frame-user_${number}'></tr>`;
             $("#" + idHtmlParent).append(content);
         }
 
-        // Create content
-        let content = "";
+        // Manage visible color
+        if(map.public) {
+          $(`#map-frame-user_${number}`).addClass("line-map-visible");
+        }
+        else {
+          $(`#map-frame-user_${number}`).removeClass("line-map-visible");
+        }
+        
+        // Display line content
         let categoryText = Dictionary.get('MAP_TYPE_' + map.category.toUpperCase());
 
-        content += `<p>[${map.lang.toUpperCase()}][${categoryText}] <b>${map.name}</b></p>
-        <p><i>${Dictionary.get('INDEX_MAP_CREATOR')} <b>${localStorage.getItem('session-id-histoatlas')}</b></i></p>
-        <p><a href="histoAtlas.html?mapId=${map.id}&edit=false"><img class="icon-action" src="img/menu/eye-solid.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a>
-        <a href="histoAtlasMapbox.html?mapId=${map.id}"><img class="icon-action" src="img/menu/earth-africa-europe.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a>`;
+        let content = ``;
+        content += `<td>${map.lang.toUpperCase()}</td>`;
 
-        content += `<a href="histoAtlas.html?mapId=${map.id}"><img class="icon-action" src="img/menu/edit-solid.svg" title="${Dictionary.get('INDEX_MAP_EDIT_COPY')}" /></a>`;
-        
-        content += `</p>`;
+        if(categoryText != undefined) {
+            content += `<td id="map-frame-category_${number}">${categoryText}</td>`;
+        }
+        else {
+            content += `<td id="map-frame-category_${number}"></td>`;
+        }
 
-        // Admin icons
-        content += `<div id="edit-visibility-div">`;
+        // Button for view and change visibility of maps
+        let editVisibilityImgs = ``;
         if(map.public) {
-          content += `<img class="icon-action-public" id="change-public-state_${number}" src="img/menu/eye-solid-green.svg" title="${Dictionary.get('INDEX_MAP_VIEW_AVAILABLE')}" />`;
+          editVisibilityImgs += `<img class="icon-action-public" id="change-public-state_${number}" src="img/menu/eye-solid-green.svg" title="${Dictionary.get('INDEX_MAP_VIEW_AVAILABLE')}" />`;
 
           if(map.publicEditable) {
-            content += `<img class="icon-action-editable" id="change-editable-state_${number}" src="img/menu/edit-solid-green.svg" title="${Dictionary.get('INDEX_MAP_EDIT_AVAILABLE')}" />`;
+            editVisibilityImgs += `<img class="icon-action-editable" id="change-editable-state_${number}" src="img/menu/edit-solid-green.svg" title="${Dictionary.get('INDEX_MAP_EDIT_AVAILABLE')}" />`;
           }
           else {
-            content += `<img class="icon-action-editable" id="change-editable-state_${number}" src="img/menu/edit-solid-red.svg" title="${Dictionary.get('INDEX_MAP_EDIT_UNAVAILABLE')}" />`;
+            editVisibilityImgs += `<img class="icon-action-editable" id="change-editable-state_${number}" src="img/menu/edit-solid-red.svg" title="${Dictionary.get('INDEX_MAP_EDIT_UNAVAILABLE')}" />`;
           }
         }
         else {
-          content += `<img class="icon-action-public" id="change-public-state_${number}" src="img/menu/eye-solid-red.svg" title="${Dictionary.get('INDEX_MAP_VIEW_UNAVAILABLE')}" />`;
-        }
-        content += `</div>`;
-
-        content += `<img class="icon-action-rename" id="rename_${number}" src="img/menu/rename.png" title="${Dictionary.get('INDEX_MAP_RENAME')}" />`;
-        content += `<img class="icon-action-delete" id="delete_${number}" src="img/menu/trash-solid.svg" title="${Dictionary.get('INDEX_MAP_DELETE')}" />`;
-        if(map.public)
-        {
-          content += `<a><img class="iframe-usermap" id="iframe-usermap_${map.id}" src="img/menu/iframe.png" title="${Dictionary.get('INDEX_MAP_EXPORT_MAP')}" /></a>`;
+          editVisibilityImgs += `<img class="icon-action-public" id="change-public-state_${number}" src="img/menu/eye-solid-red.svg" title="${Dictionary.get('INDEX_MAP_VIEW_UNAVAILABLE')}" />`;
         }
 
+        content += `<td id="map-frame-name_${number}" class="title-map"><b>${map.name}</b><img style="cursor:pointer" class="icon-action" id="rename_${number}" src="img/menu/rename.png" title="${Dictionary.get('INDEX_MAP_RENAME')}" /></td>`;
+
+        content += `<td class="user-map">${editVisibilityImgs}</td>`;
+
+        content += `<td class="date-map">${map.creationDate ? map.creationDate.toISOString().split("T")[0] : ""}</td>`;
+        content += `<td class="date-map">${map.updateDate ? map.updateDate.toISOString().split("T")[0] : ""}</td>`;
+        content += `<td class="icon-action-td"><a href="histoAtlas.html?mapId=${map.id}&edit=false"><img class="icon-action" src="img/menu/eye-solid.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a></td>`;
+        content += `<td class="icon-action-td"><a style="width:100%" href="histoAtlasMapbox.html?mapId=${map.id}"><img class="icon-action" src="img/menu/earth-africa-europe.svg" title="${Dictionary.get('INDEX_MAP_VIEW')}" /></a></td>`;
+        content += `<td class="icon-action-td"><a href="histoAtlas.html?mapId=${map.id}"><img class="icon-action" src="img/menu/edit-solid.svg" title="${Dictionary.get('INDEX_MAP_EDIT')}" /></a></td>`;
+
+        content += `<td class="icon-action-td"><img style="cursor:pointer" class="icon-action" id="delete_${number}" src="img/menu/trash-solid.svg" title="${Dictionary.get('INDEX_MAP_DELETE')}" /></td>`;
+        
+        if(map.public) {
+          content += `<td class="icon-action-td"><a><img class="iframe-publicmap" id="iframe-publicmap_${map.id}" src="img/menu/iframe.png" title="${Dictionary.get('INDEX_MAP_EXPORT_MAP')}" /></a></td>`;
+        }
+        else {
+          content += `<td></td>`;
+        }
+        
         $(`#map-frame-user_${number}`).html(content);
 
         // Manage rename action
@@ -113,8 +145,8 @@ class MenuMapFrame
                            <button id="map-rename-save_${map.id}">${Dictionary.get("INDEX_MAP_RENAME_SAVE")}</button>
                            <button id="map-rename-cancel_${map.id}">${Dictionary.get("INDEX_MAP_RENAME_CANCEL")}</button>`;
 
-            //$(`#map-div_${number}`).html(content);
-            $(`#map-frame-user_${number}`).html(content);
+            // title-map
+            $(`#map-frame-name_${number}`).html(content);
 
             // Cancel rename
             $(`#map-rename-cancel_${map.id}`).click(function()
@@ -206,16 +238,56 @@ class MenuMapFrame
               });
             }
         });
-
-        // Manage iframe
-        $(`#iframe-usermap_${map.id}`).click(function() 
+        
+        // Manage copy iframe
+        if(map.public)
         {
-            me.copyIFrame(map.id);
+          $(`#iframe-publicmap_${map.id}`).on("click", function() 
+          {
+              me.copyIFrame(map.id);
+          });
+        }
+
+        // Click on category = displays category selection and save management
+        $(`#map-frame-category_${number}`).on("click", function() 
+        {
+            let categorySelect = $(`#map-frame-category_${number}`).children(".category-select");
+
+            if(categorySelect.length == 0) 
+            {
+                let content = `<select id="category_select_${number}" class="category-select">
+                      <option value=""></option>
+                      <option value="history">History</option>
+                      <option value="present">Present</option>
+                      <option value="uchrony">Uchrony</option>
+                    </select>`;
+
+                $(`#map-frame-category_${number}`).html(content);
+
+                $(`#category_select_${number}`).val(map.category).change();
+
+                $(`#category_select_${number}`).change(function(e)
+                {
+                  Utils.callServer("map/changeCategory", "POST", {user : localStorage.getItem('session-id-histoatlas'), id : map.id, newCategory : e.target.value}).then((result) => 
+                  {
+                    map.category = e.target.value;
+                    me.displayUserMap(map, idHtmlParent, number, true)
+
+                  }).catch((err) => { 
+                    if(err.responseJSON) {
+                        toastr.error(Dictionary.get(err.responseJSON.error), Dictionary.get('INDEX_RENAME_UNABLE'));
+                    }
+                    else {
+                        toastr.error("", Dictionary.get('INDEX_RENAME_UNABLE'));
+                    }
+                  });
+                });
+            }
         });
     }
 
     /**
-     * Copy in IFrame 
+     * Copy in iFrame 
      * @param {Number}           number                 The number of the element
      */
     copyIFrame(number) {

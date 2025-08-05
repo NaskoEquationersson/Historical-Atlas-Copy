@@ -17,6 +17,7 @@
         if(data)
         {
           $.ajax({
+            crossDomain: true,
             url: urlServer,
             method: method,
             contentType: "application/json",
@@ -33,6 +34,7 @@
         else
         {
           $.ajax({
+            crossDomain: true,
             url: urlServer,
             method: method,
             contentType: "application/json",

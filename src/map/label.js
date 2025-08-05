@@ -59,7 +59,11 @@ class Label
    */
   redraw(layer, geom, number)
   {
-    layer.removeLayer(this.tooltip);
+    if(this.tooltip) 
+    {
+      layer.removeLayer(this.tooltip);
+    }
+    
     
     if(geom)
     {

@@ -54,6 +54,14 @@
   "INDEX_FOLLOW_FAIL" : "Newsletter subscription failure",
   "INDEX_FOLLOW_SUCCESS" : "Successful newsletter registration",
 
+  "INDEX_MAP_ARRAY_TITLE_LANG" : "Language",
+  "INDEX_MAP_ARRAY_TITLE_CATEGORY" : "Category",
+  "INDEX_MAP_ARRAY_TITLE_NAME" : "Name",
+  "INDEX_MAP_ARRAY_TITLE_EDITION" : "Edition",
+  "INDEX_MAP_ARRAY_TITLE_CREATION" : "Creation",
+  "INDEX_MAP_ARRAY_TITLE_MODIF" : "Modif",
+  "INDEX_MAP_ARRAY_TITLE_CREATOR" : "Creator",
+
   "SERVER_QUERY_FAIL" : "Failure of the query",
   "SERVER_USER_NOT_EXIST" : "The target user does not exist",
   "SERVER_MAIL_SEND_FAIL" : "Failed to send email",
@@ -83,10 +91,10 @@
 
   "CONTACT_TITLE" : "Contact",
   "CONTACT_DESCRIPTION" : "Send an email to report a bug, a suggestion or an opinion. You can also ask for assistance to create your maps or request a new feature on the software.",
-  "CONTACT_MAIL_LABEL" : "Your email : ",
-  "CONTACT_NAME_LABEL" : "Name : ",
-  "CONTACT_TITLE_LABEL" : "Title : ",
-  "CONTACT_MESSAGE_LABEL" : "Message : ",
+  "CONTACT_MAIL_LABEL" : "Your email",
+  "CONTACT_NAME_LABEL" : "Name",
+  "CONTACT_TITLE_LABEL" : "Title",
+  "CONTACT_MESSAGE_LABEL" : "Message",
   "CONTACT_SEND_BUTTON" : "Send",
 
   "BACK_MENU" : "Back to the menu",
@@ -102,11 +110,11 @@
   "FORGOTPASSWORD_MESSAGE_PART2" : "Your key will be valid for one day",
 
   "MYPROFIL_TITLE" : "My profile page",
-  "MYPROFIL_MAIL_LABEL" : "Your email : ",
+  "MYPROFIL_MAIL_LABEL" : "Your email",
   "MYPROFIL_CHANGE_MAIL_BUTTON" : "Edit",
-  "MYPROFIL_CHANGE_PASS_TITLE" : "Change the password : ",
-  "MYPROFIL_NEW_PASS_LABEL" : "New password : ",
-  "MYPROFIL_CONFIRM_PASS_LABEL" : "Confirm password : ",
+  "MYPROFIL_CHANGE_PASS_TITLE" : "Change the password",
+  "MYPROFIL_NEW_PASS_LABEL" : "New password",
+  "MYPROFIL_CONFIRM_PASS_LABEL" : "Confirm password",
   "MYPROFIL_CHANGE_PASS_BUTTON" : "Change password",
   "MYPROFIL_NEWSLETTER_LABEL" : " Receive the newsletter",
   "MYPROFIL_NEWSLETTER_CHANGE_BUTTON" : "Save",
@@ -127,10 +135,10 @@
 
   "REGISTRATION_TITLE" : "Registration",
   "REGISTRATION_DESCRIPTION" : "Registration is required to save your maps online, but is not required to view the maps.",
-  "REGISTRATION_NAME_LABEL" : "User name : ",
-  "REGISTRATION_PASSWORD_LABEL" : "Password  : ",
-  "REGISTRATION_COMFIRM_PASSWORD_LABEL" : "Confirm password : ",
-  "REGISTRATION_MAIL_LABEL" : "Email : ",
+  "REGISTRATION_NAME_LABEL" : "User name",
+  "REGISTRATION_PASSWORD_LABEL" : "Password",
+  "REGISTRATION_COMFIRM_PASSWORD_LABEL" : "Confirm password",
+  "REGISTRATION_MAIL_LABEL" : "Email",
   "REGISTRATION_NEWSLETTER_LABEL" : "Subscribe to the newsletter (about one email per month)",
   "REGISTRATION_SAVE_BUTTON" : "Register",
   "REGISTRATION_UNABLE_EMPTY_USERNAME" : "Unable to register : empty user name",
@@ -155,7 +163,7 @@
   "SUPPORT_LINE2" : "If you wish fund the projet, <a href='contact.html'>contact me</a>",
 
   "UNSUBSCRIBENEWLETTER_TITLE" : "Unsubscribe from the newsletter",
-  "UNSUBSCRIBENEWLETTER_USERNAME" : "Your username or mail : ",
+  "UNSUBSCRIBENEWLETTER_USERNAME" : "Your username or mail",
   "UNSUBSCRIBENEWLETTER_BUTTON" : "Unsubscribe",
   "UNSUBSCRIBENEWLETTER_UNSUBSCRIBE" : "You have been unsubscribed from the newsletter",
   "UNSUBSCRIBENEWLETTER_UNSUBSCRIBE_FAIL" : "Unsubscription failure",
@@ -163,8 +171,8 @@
 
   "MAP_LOADING_MAP" : "Loading the map in progress",
   
-  "MAP_ACTIONS_CANCEL_ACTION" : "Undo last action",
-  "MAP_ACTIONS_RETAIN_ACTION" : "Redo the last cancelled action",
+  "MAP_ACTIONS_CANCEL_ACTION" : "Undo last action (Ctrl+Z)",
+  "MAP_ACTIONS_RETAIN_ACTION" : "Redo the last cancelled action (Ctrl+Y)",
   "MAP_ACTIONS_ACTIVATE_SELECTION" : "Activate selection",
   "MAP_ACTIONS_BACK" : "Back",
   "MAP_ACTIONS_ACTIVATE_DRAWING" : "Activate drawing",
@@ -180,13 +188,13 @@
   "MAP_ACTIONS_MENU_IMPORT_EXPORT" : "Import/export menu",
   "MAP_ACTIONS_EXPORT" : "Export the visualization in HistoAtlas format",
   "MAP_ACTIONS_IMPORT" : "Import a visualization (HistoAtlas json export file)",
-  "MAP_ACTIONS_SAVE" : "Save the map on the server",
+  "MAP_ACTIONS_SAVE" : "Save the map on the server (Ctrl+S)",
   "MAP_ACTIONS_FILL" : "Filling the area",
   "MAP_ACTIONS_SYMPLIFY" : "Simplify the geometry (improves performance)",
   "MAP_ACTIONS_DESACTIVATE_CONTENT_REMOVAL_ALL" : "Disable content removal on all layers",
   "MAP_ACTIONS_MENU_COPY_PASTE" : "Open the copy and paste menu",
-  "MAP_ACTIONS_MENU_COPY_ZONE" : "Copy the selected area",
-  "MAP_ACTIONS_MENU_PASTE_ZONE" : "Paste selection",
+  "MAP_ACTIONS_MENU_COPY_ZONE" : "Copy the selected area (Ctrl+C)",
+  "MAP_ACTIONS_MENU_PASTE_ZONE" : "Paste selection (Ctrl+V)",
   "MAP_ACTIONS_AUTO_BORDER" : "Automatic creation of layer borders from other layers",
   "MAP_ACTIONS_IMPORT_GEOJSON" : "Import a GeoJson file",
   "MAP_ACTIONS_EXPORT_GEOJSON" : "Export the visualization in Geojson format",
@@ -271,7 +279,7 @@
   "MAP_PARAMS_DATE_AUTOSCROLL_ENABLE" : "Enabled auto scroll time",
   "MAP_PARAMS_DATE_AUTOSCROLL_SPEED" : "Speed : ",
 
-  "MAP_DESC_LANG_CHOISE": "Language : ",
+  "MAP_DESC_LANG_CHOISE": "Language",
   "MAP_DESC_VIEWS_NUMBER" : "views",
   "MAP_DESC_TYPE" : "Type : ",
 
@@ -323,6 +331,7 @@
   "MAP_TYPE_HISTORY" : "History",
   "MAP_TYPE_UCHRONY" : "Uchrony",
   "MAP_TYPE_PRESENT" : "Present",
+  "MAP_TYPE_NON_DEFINIE" : "Undefined",
 
   "MAP_PROP_FORM_TITLES_NAME" : "name",
   "MAP_PROP_FORM_TITLES_VALUES" : "values",
@@ -343,5 +352,7 @@
   "MAP_PROP_LAYER_FORM_TITLES_END" : "End date (optional)",
   "MAP_PROP_LAYER_FORM_SAVE_INVALID" : "Unable to save, some date fields are not valid",
 
-  "SELECT-PROJECTION-LABEL" : "Select projection"
+  "SELECT-PROJECTION-LABEL" : "Select projection",
+
+  "MUST-SAVE" : "Remember to save regularly to prevent losing your changes"
 }

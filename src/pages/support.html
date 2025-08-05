@@ -3,6 +3,8 @@
   <head>
     <title>Histo Atlas - Soutenir le projet</title>
     <link rel="icon" type="image/png" href="../img/icon.png" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   </head>
   <body>
 
@@ -10,16 +12,23 @@
 
   <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
 
+  <link href="../libs/fontawesome-free-6.2.0-web/css/fontawesome.css" rel="stylesheet">
+  <link href="../libs/fontawesome-free-6.2.0-web/css/brands.css" rel="stylesheet">
+  <link href="../libs/fontawesome-free-6.2.0-web/css/solid.css" rel="stylesheet">
+
   <div id="index-page-content">
 
-    <div id="menu"></div>
+    <div class="page-head">
+      <a href="../index.html" class="back-menu-link"></a>
+      <div id="menu-change-lang"></div>
+    </div>
 
-    <p><a href="../index.html" id="link-back-menu">Retour au menu</a></p>
+    <div class="page-content">
+      <h3 id="support-title">Soutenir le projet</h3>
 
-    <h3 id="support-title">Soutenir le projet</h3>
-
-    <p id="support-line1">Pour soutenir le projet vous pouvez le partager le projet, contribuer à son code source, créer vos cartes et les partagées.</p>
-    <p id="support-line2">Si vous souhaitez soutenir financièrement le projet, <a href="contact.html">contacter moi</a></p>
+      <p id="support-line1">Pour soutenir le projet vous pouvez le partager le projet, contribuer à son code source, créer vos cartes et les partagées.</p>
+      <p id="support-line2">Si vous souhaitez soutenir financièrement le projet, <a href="contact.html">contacter moi</a></p>
+    </div>
   </div>
 
   <script type="text/javascript" src="../config/config.js?v=9"></script>
@@ -34,23 +43,8 @@
         location.href = "http://" + window.location.host + window.location.pathname + window.location.search
     }
     
-    let lang = "en";
-
-    if(Config.getCookie("lang"))
+    Menu.loadDictionnary().then((config) =>
     {
-      lang = Config.getCookie("lang");
-    }
-    
-    let params = Config.getUrlParams();
-    if(params["lang"])
-    {
-      lang = params["lang"];
-    }
-
-    Dictionary.load(lang, "../", function()
-    {
-      Menu.init(lang);
-
       $("#link-back-menu").html(Dictionary.get('BACK_MENU'));
       $("#support-title").html(Dictionary.get('SUPPORT_TITLE'));
       $("#support-line1").html(Dictionary.get('SUPPORT_LINE1'));

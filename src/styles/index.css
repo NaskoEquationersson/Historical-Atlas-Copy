@@ -1,0 +1,677 @@
+@charset "UTF-8";
+body {
+  background-color: #F3E0DC;
+  background-image: url("../img/background.jpeg");
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* Contenu des autres pages */
+#index-page-content {
+  width: 1000px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 6px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  border: 1px solid #8A8A8A;
+}
+#index-page-content .page-head {
+  background-color: #F3E0DC;
+  padding: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#index-page-content .page-head p {
+  margin-bottom: 5px;
+}
+#index-page-content .page-head #langue-select {
+  background-color: #D4A59A;
+  border-radius: 4px;
+  height: 20px;
+  cursor: pointer;
+}
+#index-page-content .page-head #menu-change-lang {
+  margin-top: 5px;
+}
+#index-page-content .page-head .back-menu-link {
+  text-decoration: none;
+  color: black;
+}
+#index-page-content .page-head .back-menu-link .back-menu-div {
+  background-color: #D4A59A;
+  text-decoration: none;
+  color: black;
+  padding: 9px;
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 6px;
+}
+#index-page-content .page-head .back-menu-link .back-menu-div:hover {
+  background-color: #BC4639;
+}
+#index-page-content .page-head .back-menu-link .back-menu-div .back-menu-text {
+  margin-left: 3px;
+  font-weight: bold;
+}
+#index-page-content .page-content {
+  background-color: #F3E0DC;
+  padding: 6px;
+  margin-top: 10px;
+}
+#index-page-content .page-content h3 {
+  margin-top: 5px;
+}
+#index-page-content .page-content h4 {
+  margin-bottom: 10px;
+}
+#index-page-content .page-content .line-form {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#index-page-content .page-content .line-form .label-input {
+  width: 180px;
+}
+#index-page-content .page-content .line-form input {
+  background-color: #fffbf1;
+}
+#index-page-content .page-content .line-form .radio-input {
+  margin-left: 13px;
+  accent-color: #BC4639;
+}
+#index-page-content .page-content .line-form .checkbox-input {
+  accent-color: #BC4639;
+}
+#index-page-content .page-content .line-form-area {
+  flex-direction: column;
+  align-items: start;
+}
+#index-page-content .button {
+  border: 2px solid #BC4639;
+  border-radius: 5px;
+  background-color: #D4A59A;
+  font-size: 1.05em;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+#index-page-content .button:hover {
+  background-color: #BC4639;
+}
+#index-page-content .input-text {
+  border-radius: 4px;
+  height: 20px;
+  background-color: #fffbf1;
+}
+#index-page-content .input-textarea {
+  border-radius: 4px;
+  background-color: #fffbf1;
+}
+#index-page-content .input-text-large {
+  width: 300px;
+}
+
+/* Bouton for create a new map */
+#create-empty-map-link {
+  display: flex;
+  background-color: #D4A59A;
+  padding: 10px;
+  margin-bottom: 0px;
+  color: black;
+  text-decoration: none;
+  font-size: 1.1em;
+  vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+#create-empty-map-link:hover {
+  background-color: #BC4639;
+}
+#create-empty-map-link #create-empty-map-content {
+  width: 100%;
+}
+#create-empty-map-link .icon-menu-new-map {
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* Container of the links (footer) */
+#index-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+#index-links .link-frame {
+  width: 170px;
+  /* border: 2px solid #7092c2; */
+  padding: 8px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #D4A59A;
+  color: black;
+  text-decoration: none;
+}
+#index-links .link-frame:hover {
+  background-color: #BC4639;
+}
+#index-links .link-frame p {
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+#index-links .icon-link-frame {
+  width: 30px;
+  height: 30px;
+}
+
+/* Zones de présentation du logiciel (page accueil) */
+.description-div {
+  /* */
+}
+.description-div .view-description {
+  height: 28px;
+  /* border: 2px solid $third-color; */
+  background-color: #F3E0DC;
+  border-radius: 0% 0% 12px 12px;
+  display: flex;
+  cursor: pointer;
+}
+.description-div .view-description:hover {
+  background-color: #D4A59A;
+}
+.description-div #index-title {
+  text-align: center;
+  background-color: #BC4639;
+  color: #F3E0DC;
+  margin: 0px;
+  margin-top: 10px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  border-radius: 4px 4px 0px 0px;
+  margin-top: 15px;
+}
+.description-div .icon-view-description {
+  font-size: 22px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 2px;
+}
+.description-div .img-frame {
+  display: flex;
+  align-items: center;
+  /* margin-top: 5px; */
+  margin-bottom: 10px;
+}
+.description-div .img-change {
+  width: 30px;
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.description-div .img-change:hover {
+  background-color: #7092c2;
+}
+.description-div .img-change-content {
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  width: 700px;
+  height: 400px;
+  object-fit: cover;
+}
+.description-div .description {
+  background-color: #F3E0DC;
+  padding: 8px;
+  border-radius: 0px 0px 7px 7px;
+  display: none;
+}
+.description-div .description p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.description-div .description ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.description-div .img-frame {
+  display: none;
+}
+.description-div .fieldset-map-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.description-div .map-frame {
+  width: 300px;
+  border: 2px solid #7092c2;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #c8d7ec;
+}
+.description-div .map-frame:hover {
+  background-color: #aec4e2;
+}
+.description-div .map-frame p {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* Entête de la page principale */
+.head {
+  background-color: #F3E0DC;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  /* Icon action for change editable state */
+  /* follow div manager */
+}
+.head #connexion-registration-div {
+  display: flex;
+  float: right;
+  text-align: right;
+  border-radius: 5px;
+}
+.head #connexion-div {
+  display: flex;
+  flex-direction: column;
+  background-color: #D4A59A;
+  padding: 8px;
+  border-radius: 6px;
+  gap: 6px;
+  /* user name where logged */
+  /* Button for login */
+}
+.head #connexion-div #user-name-logged-in {
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 3px;
+  text-align: center;
+}
+.head #connexion-div .button-loggin {
+  width: 130px;
+  background-color: #D4A59A;
+  border: 2px solid #BC4639;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 6px;
+  /*
+  margin-bottom: 10px;
+  margin-left: 10px;
+  */
+}
+.head #connexion-div .button:hover {
+  background-color: #BC4639;
+}
+.head #connexion-div .button-loggin:hover {
+  background-color: #BC4639;
+}
+.head #connexion-div .user-name-label {
+  text-align: start;
+}
+.head #connexion-div .user-password-label {
+  text-align: start;
+}
+.head #connexion-div .button-loggin {
+  margin: auto;
+}
+.head #connexion-div .forgot-password {
+  margin: auto;
+}
+.head #connexion-div .input-text {
+  border-radius: 4px;
+  height: 20px;
+  background-color: #fffbf1;
+}
+.head .head-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.head .head-left #follow-div {
+  display: none;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #D4A59A;
+  padding-bottom: 9px;
+}
+.head .head-left #follow-div p {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  /*
+
+  margin-left : 10px;
+  */
+}
+.head .head-left #follow-div label {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  /*
+  margin-top : 10px;
+  margin-left : 10px;
+  */
+}
+.head .head-left #follow-div a {
+  margin-left: 10px;
+}
+.head .head-left #follow-div .lang-label-follow {
+  margin-left: 0px;
+  margin-right: 15px;
+}
+.head .head-left #follow-div #follow-newsletter-send {
+  cursor: pointer;
+}
+.head #follow {
+  border: 2px solid #BC4639;
+  border-radius: 5px;
+  background-color: #D4A59A;
+  font-size: 1.05em;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.head #follow:hover {
+  background-color: #BC4639;
+}
+.head #langue-select {
+  background-color: #D4A59A;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Tableau de visualisation des cartes */
+.fieldset-map-frame {
+  background-color: #ffffff;
+  border: 2px solid #BC4639;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border-radius: 4px;
+  /* */
+  /* iframe button for public map */
+  /* iframe button for user map */
+  /* Icon action of maps actions (edit and view) */
+  /* Icon action for change public state */
+  /* Icon action for change editable state */
+  /* Icon action for delete a map */
+  /* Icon action for rename a map */
+  /* ... */
+  /* Color for a visible map line of the user */
+}
+.fieldset-map-frame legend {
+  font-weight: bold;
+}
+.fieldset-map-frame .icon-action {
+  padding: 4px;
+}
+.fieldset-map-frame .icon-action-td {
+  padding: 0px;
+}
+.fieldset-map-frame .icon-action-td:hover {
+  background-color: #BC4639;
+  padding: 0px;
+}
+.fieldset-map-frame .title-column {
+  /* display: block; */
+  min-width: 85px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.fieldset-map-frame .title-column:hover {
+  background-color: #BC4639;
+}
+.fieldset-map-frame .titles-map-table {
+  background-color: #F3E0DC;
+}
+.fieldset-map-frame .titles-map-table:hover {
+  background-color: #F3E0DC;
+}
+.fieldset-map-frame .date-map {
+  width: 15%;
+}
+.fieldset-map-frame .user-map {
+  width: 15%;
+}
+.fieldset-map-frame th {
+  text-align: left;
+}
+.fieldset-map-frame td {
+  font-size: 0.9rem;
+}
+.fieldset-map-frame .iframe-publicmap {
+  width: 25px;
+  vertical-align: middle;
+  padding-left: 7px;
+  padding-right: 7px;
+  cursor: pointer;
+}
+.fieldset-map-frame .iframe-usermap {
+  width: 25px;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.fieldset-map-frame #language-choise-follow {
+  display: inline;
+}
+.fieldset-map-frame .icon-action {
+  width: 18px;
+  vertical-align: middle;
+}
+.fieldset-map-frame .icon-action:hover {
+  background-color: #BC4639;
+}
+.fieldset-map-frame .icon-action-public {
+  width: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
+  border-radius: 5px;
+  padding: 2px;
+}
+.fieldset-map-frame .icon-action-public:hover {
+  background-color: #aaaaaa;
+}
+.fieldset-map-frame .icon-action-editable {
+  width: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
+  border-radius: 5px;
+  padding: 2px;
+}
+.fieldset-map-frame .icon-action-editable:hover {
+  background-color: #aaaaaa;
+}
+.fieldset-map-frame .icon-action-delete {
+  width: 20px;
+  margin-left: 5px;
+  vertical-align: middle;
+  padding: 3px;
+  cursor: pointer;
+}
+.fieldset-map-frame .icon-action-delete:hover {
+  background-color: #e8394c;
+}
+.fieldset-map-frame .icon-action-rename {
+  width: 26px;
+  margin-left: 20px;
+  vertical-align: middle;
+  padding: 3px;
+  cursor: pointer;
+}
+.fieldset-map-frame .icon-action-rename:hover {
+  background-color: #aaaaaa;
+}
+.fieldset-map-frame table, .fieldset-map-frame th, .fieldset-map-frame td {
+  padding: 5px;
+}
+.fieldset-map-frame .line-map-visible {
+  background-color: #def3ce;
+}
+.fieldset-map-frame tr:hover {
+  background-color: #D4A59A;
+}
+.fieldset-map-frame table {
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+.fieldset-map-frame .title-map {
+  width: 70%;
+}
+
+/* Manage smartphone  */
+@media (max-width: 900px) {
+  body {
+    margin: 0px;
+    display: flex;
+  }
+  #index-title {
+    margin-left: -1px;
+    border-radius: none;
+  }
+  .description {
+    margin-left: -1px;
+    font-size: 14px;
+  }
+  #index-links .link-frame {
+    width: 150px;
+  }
+  .fieldset-map-frame .title-column {
+    min-width: 75px;
+    max-width: 75px;
+    overflow: hidden;
+  }
+}
+/* Manage smartphone */
+@media (max-width: 500px) {
+  .map-frame {
+    width: 100%;
+    font-size: 19px;
+  }
+  .icon-action {
+    width: 32px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .iframe-publicmap {
+    width: 34px;
+  }
+  .link-frame {
+    width: 42%;
+    margin: auto;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  /* */
+  #index-page-content {
+    width: 100%;
+  }
+  .map-frame {
+    width: 44%;
+    margin: 1%;
+    font-size: 17px;
+  }
+  .iframe-publicmap {
+    width: 30px;
+  }
+  .link-frame {
+    width: 28%;
+    margin: auto;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  /* */
+  .creation-date-col {
+    display: none;
+  }
+  .edition-date-col {
+    display: none;
+  }
+  .edition-col {
+    display: none;
+  }
+  .iframe-col {
+    display: none;
+  }
+  #index-page-content {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+  }
+  .fieldset-map-frame {
+    border: none;
+    margin-left: -4px;
+    padding-right: 0px;
+    width: 100%;
+  }
+  .fieldset-map-frame .title-column {
+    min-width: 40px;
+    max-width: 50px;
+    overflow: hidden;
+  }
+  .fieldset-map-frame legend {
+    background-color: #BC4639;
+    margin-bottom: -4px;
+    padding: 3px;
+    border-radius: 4px;
+  }
+  #index-links .link-frame {
+    width: 100px;
+  }
+  #create-empty-map-link {
+    display: none;
+  }
+  /* Partie description */
+  .description-div {
+    width: 100%;
+  }
+  .description-div .img-change-content {
+    width: 90%;
+    height: auto;
+  }
+  .description-div .view-description {
+    border-radius: 0% 0% 0% 0%;
+  }
+  .description-div .img-frame {
+    width: 100%;
+  }
+  .description-div .img-change {
+    width: 5%;
+  }
+  /* Others Menu */
+  #index-page-content {
+    width: 100%;
+  }
+  #connexion-registration-div {
+    display: none !important;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

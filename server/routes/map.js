@@ -18,6 +18,7 @@ router.post('/changeEditableState', auth, mapCtrl.changeEditableState);
 router.post('/createNewMap', mapCtrl.createNewMap);
 
 router.post('/rename', mapCtrl.rename);
+router.post('/changeCategory', auth, mapCtrl.changeCategory);
 
 router.delete('', auth, mapCtrl.delete);
 

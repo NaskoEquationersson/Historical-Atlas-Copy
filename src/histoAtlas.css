@@ -1,4 +1,4 @@
-﻿
+
 /*
  * body
 {
@@ -685,4 +685,13 @@ html, body {
   border-radius: 4px;
   margin-right: 4px;
   border: 1px solid black;
+}
+
+.must-sav-frame {
+  padding: 7px;
+  border-radius: 8px;
+  background-color: #E98989;
+  border: 2px solid rgb(181, 69, 69, 1) !important; 
+  max-width: 200px;
+  text-align: center;
 }

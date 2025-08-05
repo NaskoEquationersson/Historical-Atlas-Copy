@@ -3,26 +3,47 @@
   <head>
     <title>Histo Atlas - Contact</title>
     <link rel="icon" type="image/png" href="../img/icon.png" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   </head>
   <body>
 
   <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="../index.css?v=10" />
+  <link href="../libs/fontawesome-free-6.2.0-web/css/fontawesome.css" rel="stylesheet">
+  <link href="../libs/fontawesome-free-6.2.0-web/css/brands.css" rel="stylesheet">
+  <link href="../libs/fontawesome-free-6.2.0-web/css/solid.css" rel="stylesheet">
 
   <div id="index-page-content">
 
-    <div id="menu"></div>
+    <div class="page-head">
+      <a href="../index.html" class="back-menu-link"></a>
+      <div id="menu-change-lang"></div>
+    </div>
 
-    <p><a href="../index.html" id="link-back-menu">Retour au menu</a></p>
+    <div class="page-content">
+      <h3 id="contact-title">Contact</h3>
 
-    <h3 id="contact-title">Contact</h3>
-    <p id="contact-description">Envoyé un mail pour remonter un bug, une suggestion ou un avis. Vous pouvez également demander de l'assistance pour créer vos cartes ou demander une nouvelle fonctionnalité sur le logiciel.</p>
-    <label for="mail" id="mail-label" >Votre Mail : </label><br/><input id="mail" type="text" style="width: 250px;"></input><br/>
-    <label for="name" id="name-label">Nom ou pseudo : </label><br/><input id="name" type="text" style="width: 250px;"></input><br/>
-    <label for="title" id="title-label">Titre : </label><br/><input id="title" type="text" style="width: 500px;"></input><br/>
-    <label for="message" id="message-label">Message : </label><br/><textarea id="message" name="message" rows="22" cols="80"></textarea><br/><br/>
-    <button id="send-button" style="width : 200px; height: 30px">Envoyer</button>
+      <p id="contact-description">Envoyé un mail pour remonter un bug, une suggestion ou un avis. Vous pouvez également demander de l'assistance pour créer vos cartes ou demander une nouvelle fonctionnalité sur le logiciel.</p>
+      <div class="line-form">
+        <label for="mail" id="mail-label" class="label-input" style="width: 100px;">Votre Mail</label>
+        <input id="mail" type="text" style="width: 250px;" class="input-text"></input>
+      </div>
+      <div class="line-form">
+        <label for="name" id="name-label" class="label-input" style="width: 100px;">Nom ou pseudo</label>
+        <input id="name" type="text" style="width: 250px;" class="input-text"></input>
+      </div>
+      <div class="line-form">
+        <label for="title" id="title-label" class="label-input" style="width: 100px;">Titre</label>
+        <input id="title" type="text" style="width: 500px;" class="input-text"></input>
+      </div>
+      <div class="line-form line-form-area">
+        <label for="message" id="message-label">Message</label>
+        <textarea id="message" name="message" rows="22" cols="80" class="input-textarea"></textarea>
+      </div>
+
+      <button id="send-button" class="button">Envoyer</button>
+    </div>
   </div>
   
   <script type="text/javascript" src="../config/config.js?v=9"></script>
@@ -37,97 +58,71 @@
         location.href = "http://" + window.location.host + window.location.pathname + window.location.search
     }
 
-    /* Load maps file and display all */
-    let lang = "en";
-
-    if(Config.getCookie("lang"))
+    Menu.loadDictionnary().then((config) =>
     {
-      lang = Config.getCookie("lang");
-    }
-
-    let params = Config.getUrlParams();
-    if(params["lang"])
-    {
-      lang = params["lang"];
-    }
-
-    Config.load(true).then((config) =>
-    {
-      Dictionary.load(lang, "../", function()
+      function validateEmail(email) 
       {
-        Menu.init(lang);
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
 
-        function validateEmail(email) 
+      $("#send-button").click(function()
+      {
+        let mail = $("#mail").val();
+        let message = $("#message").val();
+        let title = $("#title").val();
+        let name = $("#name").val();
+
+        if(mail.length == 0)
         {
-          const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
+          alert(Dictionary.get("CONTACT_EMPTY_MAIL"));
         }
-
-        $("#send-button").click(function() 
+        else if(!validateEmail(mail))
         {
-          let mail = $("#mail").val();
-          let message = $("#message").val();
-          let title = $("#title").val();
-          let name = $("#name").val();
-
-          if(mail.length == 0)
-          {
-            alert(Dictionary.get("CONTACT_EMPTY_MAIL"));
-          }
-          else if(!validateEmail(mail))
-          {
-            alert("Adresse mail invalide");
-          }
-          else if(message.length == 0)
-          {
-            alert("Message vide")
-          }
-          else if(name.length == 0)
-          {
-            alert("Nom ou pseudo vide")
-          }
-          else if(title.length == 0)
-          {
-            alert("Titre vide")
-          }
-          else
-          {
-            let urlServer = config.serverUrl + "/api/user/mail";
-
-            // data: JSON.stringify({name : name, message : message, title : title, mail : mail}),
-
-            $.ajax({
-              url: "../mail/contact.php",
-              method: "POST",
-              data: {name : name, message : message, title : title, mail : mail},
-              success: (response) => {
-
-                alert("Message Envoyé");
-                //window.location.href = "../index.html";
-              },
-              error: (err) => {
-                alert("Echec de l'envoit du mail");
-
-              }
-            });
-          }
-        });
-
-        // Init text from Dictionnary
-        $("#contact-title").html(Dictionary.get('CONTACT_TITLE'));
-        $("#contact-description").html(Dictionary.get('CONTACT_DESCRIPTION'));
-        $("#mail-label").html(Dictionary.get('CONTACT_MAIL_LABEL'));
-        $("#name-label").html(Dictionary.get('CONTACT_NAME_LABEL'));
-        $("#title-label").html(Dictionary.get('CONTACT_TITLE_LABEL'));
-        $("#message-label").html(Dictionary.get('CONTACT_MESSAGE_LABEL'));
-        $("#send-button").html(Dictionary.get('CONTACT_SEND_BUTTON'));
-
-        $("#link-back-menu").html(Dictionary.get('BACK_MENU'));
-
+          alert(Dictionary.get("CONTACT_EMPTY_INVALID"));
+        }
+        else if(message.length == 0)
+        {
+          alert(Dictionary.get("CONTACT_EMPTY_MESSAGE"));
+        }
+        else if(name.length == 0)
+        {
+          alert(Dictionary.get("CONTACT_EMPTY_NAME"));
+        }
+        else if(title.length == 0)
+        {
+          alert(Dictionary.get("CONTACT_EMPTY_TITLE"));
+        }
+        else
+        {
+          let urlServer = config.serverUrl + "/api/user/mail";
+          $.ajax({
+            url: "../mail/contact.php",
+            method: "POST",
+            data: {name : name, message : message, title : title, mail : mail},
+            success: (response) => {
+              alert(Dictionary.get("CONTACT_MAIL_SEND"));
+              //window.location.href = "../index.html";
+            },
+            error: (err) => {
+              alert("Echec de l'envoit du mail");
+            }
+          });
+        }
       });
-    });
+
+      // Init text from Dictionnary
+      $("#contact-title").html(Dictionary.get('CONTACT_TITLE'));
+      $("#contact-description").html(Dictionary.get('CONTACT_DESCRIPTION'));
+      $("#mail-label").html(Dictionary.get('CONTACT_MAIL_LABEL'));
+      $("#name-label").html(Dictionary.get('CONTACT_NAME_LABEL'));
+      $("#title-label").html(Dictionary.get('CONTACT_TITLE_LABEL'));
+      $("#message-label").html(Dictionary.get('CONTACT_MESSAGE_LABEL'));
+      $("#send-button").html(Dictionary.get('CONTACT_SEND_BUTTON'));
+
+      $("#link-back-menu").html(Dictionary.get('BACK_MENU'));
+  });
 
   </script>
-
   </body>
 </html>

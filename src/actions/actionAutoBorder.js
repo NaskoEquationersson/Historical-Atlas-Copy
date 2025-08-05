@@ -26,7 +26,7 @@ class ActionAutoBorder extends Action
     let oldGeom = this.targetZone.geom;
     this.targetZone.geom = this.geom;
 
-    if(this.timeControl.value <= this.targetZone.startDate || this.timeControl.value >= this.targetZone.endDate)
+    if(this.targetZone.params.timeEnable && (this.timeControl.value <= this.targetZone.startDate || this.timeControl.value >= this.targetZone.endDate))
     {
       this.timeControl.setValue(this.targetZone.startDate);
     }

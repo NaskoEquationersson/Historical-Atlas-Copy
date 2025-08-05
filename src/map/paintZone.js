@@ -175,7 +175,7 @@ class PaintZone
   {
     for(let i = 0; i < layersManager.layerGroups.length; i++)
     {
-      if(layersManager.layerGroups[i].selectedZone && layersManager.layerGroups[i].selectedZone != this)
+      if(layersManager.layerGroups[i].selectedZone && layersManager.layerGroups[i].selectedZone != this && layersManager.layerGroups[i].selectedZone.geom != null)
       {
         this.geom = turf.difference(turf.truncate(this.geom), turf.truncate(layersManager.layerGroups[i].selectedZone.geom));
       }

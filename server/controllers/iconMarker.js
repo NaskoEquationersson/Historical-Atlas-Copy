@@ -93,8 +93,6 @@ exports.getImage = (req, res, next) =>
 
     let sql = `SELECT * FROM icons_markers WHERE id=${req.params.id}`;
 
-
-
     db.query(sql).then((iconsMarkers) => {
 
       console.log(iconsMarkers[0]["url"]);

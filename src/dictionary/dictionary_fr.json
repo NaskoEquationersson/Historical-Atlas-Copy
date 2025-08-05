@@ -54,6 +54,14 @@
   "INDEX_FOLLOW_FAIL" : "Echec inscription newsletter",
   "INDEX_FOLLOW_SUCCESS" : "Inscription newsletter réussie",
 
+  "INDEX_MAP_ARRAY_TITLE_LANG" : "Langue",
+  "INDEX_MAP_ARRAY_TITLE_CATEGORY" : "Catégorie",
+  "INDEX_MAP_ARRAY_TITLE_NAME" : "Nom",
+  "INDEX_MAP_ARRAY_TITLE_EDITION" : "Edition",
+  "INDEX_MAP_ARRAY_TITLE_CREATION" : "Création",
+  "INDEX_MAP_ARRAY_TITLE_MODIF" : "Modif",
+  "INDEX_MAP_ARRAY_TITLE_CREATOR" : "Créateur",
+
   "SERVER_QUERY_FAIL" : "Échec de la requête",
   "SERVER_USER_NOT_EXIST" : "L'utilisateur cible n'existe pas",
   "SERVER_MAIL_SEND_FAIL" : "Echec de l'envoit de l'email",
@@ -82,11 +90,11 @@
   "CONTACT_MAIL_FAIL" : "Echec de l'envoit du mail",
 
   "CONTACT_TITLE" : "Contact",
-  "CONTACT_DESCRIPTION" : "Envoyé un mail pour remonter un bug, une suggestion ou un avis. Vous pouvez également demander de l'assistance pour créer vos cartes ou demander une nouvelle fonctionnalité sur le logiciel.",
-  "CONTACT_MAIL_LABEL" : "Votre Mail : ",
-  "CONTACT_NAME_LABEL" : "Nom ou pseudo : ",
-  "CONTACT_TITLE_LABEL" : "Titre : ",
-  "CONTACT_MESSAGE_LABEL" : "Message : ",
+  "CONTACT_DESCRIPTION" : "Envoyer un mail pour remonter un bug, une suggestion ou un avis. Vous pouvez également demander de l'assistance pour créer vos cartes ou demander une nouvelle fonctionnalité sur le logiciel.",
+  "CONTACT_MAIL_LABEL" : "Votre Mail",
+  "CONTACT_NAME_LABEL" : "Nom ou pseudo",
+  "CONTACT_TITLE_LABEL" : "Titre",
+  "CONTACT_MESSAGE_LABEL" : "Message",
   "CONTACT_SEND_BUTTON" : "Envoyer",
 
   "BACK_MENU" : "Retour au menu",
@@ -102,11 +110,11 @@
   "FORGOTPASSWORD_MESSAGE_PART2" : "Votre clé sera valide une journée",
 
   "MYPROFIL_TITLE" : "Mon profil",
-  "MYPROFIL_MAIL_LABEL" : "Votre Mail : ",
+  "MYPROFIL_MAIL_LABEL" : "Votre Mail",
   "MYPROFIL_CHANGE_MAIL_BUTTON" : "Modifier",
-  "MYPROFIL_CHANGE_PASS_TITLE" : "Changer le mot de passe : ",
-  "MYPROFIL_NEW_PASS_LABEL" : "Nouveau mot de passe : ",
-  "MYPROFIL_CONFIRM_PASS_LABEL" : "Confirmer le mot de passe : ",
+  "MYPROFIL_CHANGE_PASS_TITLE" : "Changer le mot de passe",
+  "MYPROFIL_NEW_PASS_LABEL" : "Nouveau mot de passe",
+  "MYPROFIL_CONFIRM_PASS_LABEL" : "Confirmer le mot de passe",
   "MYPROFIL_CHANGE_PASS_BUTTON" : "Modifier le mot de passe",
   "MYPROFIL_NEWSLETTER_LABEL" : " Recevoir la newsletter",
   "MYPROFIL_NEWSLETTER_CHANGE_BUTTON" : "Sauvegarder",
@@ -127,10 +135,10 @@
 
   "REGISTRATION_TITLE" : "Inscription",
   "REGISTRATION_DESCRIPTION" : "L'inscription est nécessaire pour sauvegarder vos cartes en ligne, mais pour consulter les cartes elle n'est pas nécessaire.",
-  "REGISTRATION_NAME_LABEL" : "Nom d'utilisateur : ",
-  "REGISTRATION_PASSWORD_LABEL" : "Mot de passe : ",
-  "REGISTRATION_COMFIRM_PASSWORD_LABEL" : "Confirmer le mot de passe : ",
-  "REGISTRATION_MAIL_LABEL" : "Mail : ",
+  "REGISTRATION_NAME_LABEL" : "Nom d'utilisateur",
+  "REGISTRATION_PASSWORD_LABEL" : "Mot de passe",
+  "REGISTRATION_COMFIRM_PASSWORD_LABEL" : "Confirmer le mot de passe",
+  "REGISTRATION_MAIL_LABEL" : "Mail",
   "REGISTRATION_NEWSLETTER_LABEL" : "Inscription à la newsletter (environ un mail par mois)",
   "REGISTRATION_SAVE_BUTTON" : "Inscription",
   "REGISTRATION_UNABLE_EMPTY_USERNAME" : "Inscription impossible : nom d'utilisateur vide",
@@ -155,7 +163,7 @@
   "SUPPORT_LINE2" : "Si vous souhaitez soutenir financièrement le projet, <a href='contact.html'>contactez moi</a>",
 
   "UNSUBSCRIBENEWLETTER_TITLE" : "Désinscription de la newsletter",
-  "UNSUBSCRIBENEWLETTER_USERNAME" : "Votre nom d'utilisateur ou mail : ",
+  "UNSUBSCRIBENEWLETTER_USERNAME" : "Votre nom d'utilisateur ou mail",
   "UNSUBSCRIBENEWLETTER_BUTTON" : "Désinscription",
   "UNSUBSCRIBENEWLETTER_UNSUBSCRIBE" : "Vous avez été désinscrit de la newsletter",
   "UNSUBSCRIBENEWLETTER_UNSUBSCRIBE_FAIL" : "Echec de la désinscription",
@@ -163,8 +171,8 @@
 
   "MAP_LOADING_MAP" : "Chargement de la carte en cours",
 
-  "MAP_ACTIONS_CANCEL_ACTION" : "Annuler la dernière action",
-  "MAP_ACTIONS_RETAIN_ACTION" : "Rétablir la dernière action annulé",
+  "MAP_ACTIONS_CANCEL_ACTION" : "Annuler la dernière action (Ctrl+Z)",
+  "MAP_ACTIONS_RETAIN_ACTION" : "Rétablir la dernière action annulé (Ctrl+Y)",
   "MAP_ACTIONS_ACTIVATE_SELECTION" : "Activer la selection",
   "MAP_ACTIONS_BACK" : "Retour",
   "MAP_ACTIONS_ACTIVATE_DRAWING" : "Activer le dessin",
@@ -180,13 +188,13 @@
   "MAP_ACTIONS_MENU_IMPORT_EXPORT" : "Menu import/export",
   "MAP_ACTIONS_EXPORT" : "Exporter la visualisation au format HistoAtlas",
   "MAP_ACTIONS_IMPORT" : "Importer une visualisation (fichier json d'export HistoAtlas)",
-  "MAP_ACTIONS_SAVE" : "Sauvegarder la carte sur le server",
+  "MAP_ACTIONS_SAVE" : "Sauvegarder la carte sur le server (Ctrl+S)",
   "MAP_ACTIONS_FILL" : "Remplissage de la zone",
   "MAP_ACTIONS_SYMPLIFY" : "Simplifier la géométrie (améliore les performances)",
   "MAP_ACTIONS_DESACTIVATE_CONTENT_REMOVAL_ALL" : "Désactiver le retait de contenu sur toutes les couches",
   "MAP_ACTIONS_MENU_COPY_PASTE" : "Ouvrir le menu copié-coller",
-  "MAP_ACTIONS_MENU_COPY_ZONE" : "Copier la zone selectionnée",
-  "MAP_ACTIONS_MENU_PASTE_ZONE" : "Coller la selection",
+  "MAP_ACTIONS_MENU_COPY_ZONE" : "Copier la zone selectionnée (Ctrl+C)",
+  "MAP_ACTIONS_MENU_PASTE_ZONE" : "Coller la selection (Ctrl+V)",
   "MAP_ACTIONS_AUTO_BORDER" : "Création automatique des bordure de la couche à partir des autres couches",
   "MAP_ACTIONS_IMPORT_GEOJSON" : "Import un fichier GeoJson",
   "MAP_ACTIONS_EXPORT_GEOJSON" : "Exporter la visualisation au format Geojson",
@@ -271,7 +279,7 @@
   "MAP_PARAMS_DATE_AUTOSCROLL_ENABLE" : "Activé défilement auto temps",
   "MAP_PARAMS_DATE_AUTOSCROLL_SPEED" : "Vitesse : ",
 
-  "MAP_DESC_LANG_CHOISE": "Langue : ",
+  "MAP_DESC_LANG_CHOISE": "Langue",
   "MAP_DESC_VIEWS_NUMBER" : "vues",
   "MAP_DESC_TYPE" : "Type : ",
 
@@ -323,6 +331,7 @@
   "MAP_TYPE_HISTORY" : "Historique",
   "MAP_TYPE_UCHRONY" : "Uchronie",
   "MAP_TYPE_PRESENT" : "Présent",
+  "MAP_TYPE_NON_DEFINIE" : "Non définie",
 
   "MAP_PROP_FORM_TITLES_NAME" : "nom",
   "MAP_PROP_FORM_TITLES_VALUES" : "valeurs",
@@ -343,6 +352,7 @@
   "MAP_PROP_LAYER_FORM_TITLES_END" : "Date de fin (optionel)",
   "MAP_PROP_LAYER_FORM_SAVE_INVALID" : "Impossible de sauvegarder, certains champs dates ne sont pas valides",
 
-  "SELECT-PROJECTION-LABEL" : "Sélectionner la projection"
+  "SELECT-PROJECTION-LABEL" : "Sélectionner la projection",
 
+  "MUST-SAVE" : "Penser à Sauvegarder régulièrement pour ne pas perdre vos modifications"
 }

@@ -26,7 +26,7 @@ exports.save = (req, res, next) =>
   // Create file
   fs.writeFile(fileUrl, req.body.content, function (err) 
   {
-    if (err) return res.status(500).json({ error: 'SERVER_CREATION_SAVE_FILE_FAIL' });;
+    if (err) return res.status(500).json({ error: 'SERVER_CREATION_SAVE_FILE_FAIL' });
 
     user.getUserIdFromName(req.body.user).then((userId) => {
 
@@ -47,7 +47,7 @@ exports.save = (req, res, next) =>
         }
         else
         {
-          let sql = `INSERT INTO maps (user_id, name, url, lang, category, update_date) VALUES ('${userId}', '${req.body.name}', '${fileUrl}', '${req.body.lang}', '${req.body.type}', '${new Date().toISOString().slice(0, 19).replace("T", " ")}')`;
+          let sql = `INSERT INTO maps (user_id, name, url, lang, category, update_date, creation_date) VALUES ('${userId}', '${req.body.name}', '${fileUrl}', '${req.body.lang}', '${req.body.type}', '${new Date().toISOString().slice(0, 19).replace("T", " ")}', '${new Date().toISOString().slice(0, 19).replace("T", " ")}')`;
 
           db.query(sql).then((result) => {
 
@@ -388,6 +388,30 @@ exports.rename = (req, res, next) =>
         res.status(500).json({ error: 'SERVER_QUERY_FAIL' });
       }
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
+
+  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+}
+
+/*
+ * Change the category of a map
+ * @param {String}                      req.body.user                       The user name
+ * @param {String}                      req.body.newCategory                The new category
+ * @param {String}                      req.body.fileName                   The file name 
+ * @param {String}                      req.body.id                         Id of the map
+ */
+exports.changeCategory = (req, res, next) => 
+{
+  config.connectBDD().then((db) => {
+
+    let sql = `UPDATE maps SET category = '${req.body.newCategory}' WHERE maps.id = ${req.body.id}`
+
+    db.query(sql).then((result) => {
+
+      db.end();
+      log.log("renameMap", {name : req.body.user, newCategory : req.body.newCategory, id : req.body.id});
+      res.status(200).json({});
+
+    }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' }) });
 
   }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }

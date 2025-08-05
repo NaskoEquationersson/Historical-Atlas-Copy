@@ -12,13 +12,14 @@ class LoadSaveManager
    * @property {BackgroundControl}          backgroundControl        The background controller
    * @property {TimeControl}                timeControl              The time control
    * @property {LayersControl}              layersControl            The layers control
-   * @property {Object}                     jsonBackgrounds          The json background
    * @property {Boolean}                    logged                   The logged state 
    * @property {ActionsList}                actionsList              Manager of action list and undo/redo
    * @property {DescriptionManager}         descriptionManager       The manager for display description in pop-up
    * @property {ActionsControl}             actionsControl           The action control
+   * @property {SaveFrameControl}           saveFrameControl         The frame for save
+   * @property {Object}                     jsonBackgrounds          The json background
    */
-  constructor(map, layersManager, params, backgroundControl, timeControl, layersControl, actionsList, descriptionManager, jsonBackgrounds)
+  constructor(map, layersManager, params, backgroundControl, timeControl, layersControl, actionsList, descriptionManager, saveFrameControl, jsonBackgrounds)
   {
     this.map = map;
     this.layersManager = layersManager;
@@ -30,6 +31,7 @@ class LoadSaveManager
     this.timeControl = timeControl;
     this.actionsList = actionsList;
     this.descriptionManager = descriptionManager;
+    this.saveFrameControl = saveFrameControl;
 
     if(localStorage.getItem('session-id-histoatlas'))
     {
@@ -271,6 +273,9 @@ class LoadSaveManager
         let contentSave = {name : name, fileName : fileName, id : result.id, content : JSON.stringify(content), exist : result.exist, user : localStorage.getItem('session-id-histoatlas'), lang : mapLang, type : mapType};
         
         Utils.callServer("map/save", "POST", contentSave).then((result) => {
+
+          this.saveFrameControl.hide();
+          this.saveFrameControl.initTimer();
 
           $("#loading").html("");
           this.actionsControl.buttons["save"].show();

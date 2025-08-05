@@ -4,7 +4,7 @@
 class Menu 
 {
   /**
-   * Init the menu
+   * Init the menu, with choise of the langue
    * @property {String}                  lang                  The lang
    */
   static init(lang)
@@ -15,14 +15,21 @@ class Menu
         <option value="fr">Francais</option>
         <option value="en">English</option>
     </select>`;
+    $("#menu-change-lang").html(content);
 
-    $("#menu").html(content);
+    if($(".back-menu-link").length > 0) {
+      let contentBackLink = `<div class="back-menu-div">
+            <i class="fa-solid fa-arrow-left back-menu-icon"></i>
+            <span class="back-menu-text">Retour au menu</span>
+          </div>`
+      $(".back-menu-link").html(contentBackLink);
+      $(".back-menu-text").html(Dictionary.get('BACK_MENU'));
+    }
 
     $("#langue-select").val(lang);
 
-    $("#langue-select").on('change', function() {
-      //alert(this.value);
-
+    $("#langue-select").on('change', function() 
+    {
       let lang = this.value;
 
       Config.setCookie("lang", lang, 30);
@@ -56,6 +63,30 @@ class Menu
     });
   }
 
+  /* 
+   * Load the dictionnary for get the lang
+   */
+  static loadDictionnary()
+  {
+    let lang = "en";
+    if(Config.getCookie("lang"))
+      lang = Config.getCookie("lang");
 
+    let params = Config.getUrlParams();
+    if(params["lang"])
+      lang = params["lang"];
+
+    return new Promise((resolve, reject) => {
+      Config.load(true).then((config) =>
+        {
+          Dictionary.load(lang, "../", function()
+          {
+            Menu.init(lang);
+
+            resolve(config);
+        });
+      });
+    });
+  }
 }
 

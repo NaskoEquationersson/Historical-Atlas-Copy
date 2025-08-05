@@ -3,22 +3,32 @@
   <head>
     <title>Histo Atlas - Désinscription de la newsletter</title>
     <link rel="icon" type="image/png" href="../img/icon.png" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   </head>
   <body>
 
-  <link rel="stylesheet" href="../index.css?v=10" />
-
   <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+  <link href="../libs/fontawesome-free-6.2.0-web/css/fontawesome.css" rel="stylesheet">
+  <link href="../libs/fontawesome-free-6.2.0-web/css/brands.css" rel="stylesheet">
+  <link href="../libs/fontawesome-free-6.2.0-web/css/solid.css" rel="stylesheet">
 
   <div id="index-page-content">
 
-    <div id="menu"></div>
+    <div class="page-head">
+      <a href="../index.html" class="back-menu-link"></a>
+      <div id="menu-change-lang"></div>
+    </div>
 
-    <p><a href="../index.html" id="link-back-menu">Retour au menu</a></p>
-
-    <h4 id="title">Désinscription de la newsletter  : </h4>
-    <label for="name" id="name-label">Votre nom d'utilisateur : </label><br/><input id="name" type="text" style="width: 250px;"></input><br/><br/>
-    <button id="unsubcribe">Désinscription</button><br/>
+    <div class="page-content">
+      <h4 id="title">Désinscription de la newsletter </h4>
+      <div class="line-form">
+        <label for="name" id="name-label" style="width: 215px;">Votre nom d'utilisateur</label>
+        <input id="name" type="text" style="width: 250px;" class="input-text"></input>
+        <button id="unsubcribe" class="button" style="margin-left: 15px">Désinscription</button>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript" src="../config/config.js?v=9"></script>
@@ -33,66 +43,50 @@
         location.href = "http://" + window.location.host + window.location.pathname + window.location.search
     }
 
-    let lang = "en";
-    if(Config.getCookie("lang"))
+    Menu.loadDictionnary().then((config) =>
     {
-      lang = Config.getCookie("lang");
-    }
-    let params = Config.getUrlParams();
-    if(params["lang"])
-    {
-      lang = params["lang"];
-    }
+      Menu.init(lang);
 
-    Config.load(true).then((config) =>
-    {
-      Dictionary.load(lang, "../", function()
+      $("#unsubcribe").click(function() 
       {
-        Menu.init(lang);
+        let userName = $("#name").val();
 
-        $("#unsubcribe").click(function() 
+        if(userName != "")
         {
-          let userName = $("#name").val();
+          $.ajax({
+            url: config.serverUrl + "/api/user/changeNewsletterState",
+            method: "PATCH",
+            contentType: "application/json",
+            data: JSON.stringify({user : userName, newsletter : false}),
+            success: (response) => {
 
-          if(userName != "")
-          {
-            $.ajax({
-              url: config.serverUrl + "/api/user/changeNewsletterState",
-              method: "PATCH",
-              contentType: "application/json",
-              data: JSON.stringify({user : userName, newsletter : false}),
-              success: (response) => {
-
-                alert(Dictionary.get('UNSUBSCRIBENEWLETTER_UNSUBSCRIBE'));
-                window.location.href = "../index.html";
-              },
-              error: (err) => {
-                if(err.responseJSON)
-                {
-                  alert(`${Dictionary.get('UNSUBSCRIBENEWLETTER_UNSUBSCRIBE_FAIL')} : ${Dictionary.get(err.responseJSON.error)}`);
-                }
-                else
-                {
-                  alert(Dictionary.get('UNSUBSCRIBENEWLETTER_UNSUBSCRIBE_FAIL'));
-                }
-                window.location.href = "../index.html";
+              alert(Dictionary.get('UNSUBSCRIBENEWLETTER_UNSUBSCRIBE'));
+              window.location.href = "../index.html";
+            },
+            error: (err) => {
+              if(err.responseJSON)
+              {
+                alert(`${Dictionary.get('UNSUBSCRIBENEWLETTER_UNSUBSCRIBE_FAIL')} : ${Dictionary.get(err.responseJSON.error)}`);
               }
-            });
-          }
-          else
-          {
-            alert(Dictionary.get('UNSUBSCRIBENEWLETTER_USERNAME_EMPTY'));
-          }
-        });
-
-
-        $("#link-back-menu").html(Dictionary.get('BACK_MENU'));
-        $("#title").html(Dictionary.get('UNSUBSCRIBENEWLETTER_TITLE'));
-        $("#name-label").html(Dictionary.get('UNSUBSCRIBENEWLETTER_USERNAME'));
-        $("#unsubcribe").html(Dictionary.get('UNSUBSCRIBENEWLETTER_BUTTON'));
-
-        document.title = "Histo Atlas - " + Dictionary.get('SUPPORT_TITLE');
+              else
+              {
+                alert(Dictionary.get('UNSUBSCRIBENEWLETTER_UNSUBSCRIBE_FAIL'));
+              }
+              window.location.href = "../index.html";
+            }
+          });
+        }
+        else
+        {
+          alert(Dictionary.get('UNSUBSCRIBENEWLETTER_USERNAME_EMPTY'));
+        }
       });
+
+      $("#title").html(Dictionary.get('UNSUBSCRIBENEWLETTER_TITLE'));
+      $("#name-label").html(Dictionary.get('UNSUBSCRIBENEWLETTER_USERNAME'));
+      $("#unsubcribe").html(Dictionary.get('UNSUBSCRIBENEWLETTER_BUTTON'));
+
+      document.title = "Histo Atlas - " + Dictionary.get('SUPPORT_TITLE');
     });
   </script>
   </body>

@@ -95,7 +95,10 @@ class DescriptionManager
 			<div id="type-map-choise">
 				<text id="type-map-choise-text">${Dictionary.get("MAP_TYPE_TEXT")}</text>
 
-				<input type="radio" id="type-map-choise-history" name="type-map-choise" value="history" checked="true">
+				<input type="radio" id="type-map-choise-none" name="type-map-choise" value="">
+				<label for="type-map-choise-history" id="type-map-choise-history-label">${Dictionary.get("MAP_TYPE_NON_DEFINIE")}</label>
+
+				<input type="radio" id="type-map-choise-history" name="type-map-choise" value="history">
 				<label for="type-map-choise-history" id="type-map-choise-history-label">${Dictionary.get("MAP_TYPE_HISTORY")}</label>
 
 				<input type="radio" id="type-map-choise-uchrony" name="type-map-choise" value="uchrony">
@@ -103,7 +106,7 @@ class DescriptionManager
 
 				<input type="radio" id="type-map-choise-present" name="type-map-choise" value="present">
 				<label for="type-map-choise-present" id="type-map-choise-present-label">${Dictionary.get("MAP_TYPE_PRESENT")}</label>
-	    </div>`;
+	    	</div>`;
 
 			$("#dialog-description").html(html);
 
