@@ -9,12 +9,11 @@ const path = require('path');
 
 const app = express();
 
-/*
+/* A bit of AI larp below*/
 app.use(cors({
-    origin: ['http://141.94.244.143', 'http://localhost', 'http://www.histoatlas.org'],
+    origin: ['https://histoatlas.nasko.tech/', 'http://localhost'],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
-*/
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

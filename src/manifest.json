@@ -1,6 +1,6 @@
 {
 	"permissions": [
-	  "*://histoatlas.org/*",
+	  "https://histoatlas.nasko.tech",
 	  "cookies"
 	]
 }

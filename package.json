@@ -1,0 +1,12 @@
+{
+  "name": "histoatlas-monorepo",
+  "version": "1.0.0",
+  "scripts": {
+    "install-all": "npm install --prefix server && npm install --prefix src",
+    "build-frontend": "npm run build --prefix src",
+    "move-frontend": "mv src/dist server/public || move src\\dist server\\public", 
+    "build": "npm run install-all && npm run build-frontend && npm run move-frontend",
+    "start": "node server/server.js"
+  }
+}
+
