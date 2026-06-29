@@ -44,7 +44,7 @@ exports.add = (req, res, next) =>
           res.status(200).json({});
 
         }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_SAVE_QUERY_FAIL' })});
-      }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+      }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
     }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
   });
 }
@@ -67,7 +67,7 @@ exports.get = (req, res, next) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 
@@ -113,6 +113,6 @@ exports.getImage = (req, res, next) =>
       });
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 
 }

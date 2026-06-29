@@ -88,7 +88,7 @@ exports.checkIfFileExist = (req, res, next) =>
 
     }).catch(error => {db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -109,7 +109,7 @@ exports.getVisibleMapsOfUser = (req, res, next) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -132,7 +132,7 @@ exports.getVisibleMaps = (req, res, next) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -241,7 +241,7 @@ exports.getMapManage = (sql, id, editMode, mapbox, userName, res) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -266,7 +266,7 @@ exports.changePublicState = (req, res, next) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -291,7 +291,7 @@ exports.changeEditableState = (req, res, next) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /* 
@@ -334,7 +334,7 @@ exports.delete = (req, res, next) =>
       }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' }) });
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -389,7 +389,7 @@ exports.rename = (req, res, next) =>
       }
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' })});
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
 
 /*
@@ -413,5 +413,5 @@ exports.changeCategory = (req, res, next) =>
 
     }).catch(error => { db.end(); res.status(500).json({ error: 'SERVER_QUERY_FAIL' }) });
 
-  }).catch((e) => { db.end(); res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
+  }).catch((e) => { res.status(500).json({ error: 'SERVER_CONNEXION_DATABASE_FAIL' }) });
 }
