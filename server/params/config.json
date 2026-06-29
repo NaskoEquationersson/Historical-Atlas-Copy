@@ -1,11 +1,11 @@
 {
   "bdd" : 
   {
-    "host" : "mysql.railway.internal",
+    "host" : "hayabusa.proxy.rlwy.net",
     "user" : "root",
     "password" : "FdrZsmYwyCCogdFhRWbgGhNsHgzgVgLf",
     "database" : "railway",
-    "port" : 3306
+    "port" : 15898
   },
   "tokenKey" : "tokenTest",
   "mail" : 
