@@ -11,7 +11,7 @@ const app = express();
 
 /* A bit of AI larp below*/
 app.use(cors({
-    origin: ['https://histoatlas.nasko.tech/', 'http://localhost'],
+    origin: ['https://histoatlasserver.nasko.tech/', 'http://localhost'],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
