@@ -9,6 +9,11 @@ const certificate = fs.readFileSync('/etc/ssl/node/cert.pem', 'utf8');
 const credentials = {key: privateKey, cert: certificate};
 */
 
+const fs = require('fs');
+if (!fs.existsSync('logs')) fs.mkdirSync('logs');
+if (!fs.existsSync('files')) fs.mkdirSync('files');
+if (!fs.existsSync('icons')) fs.mkdirSync('icons');
+
 const normalizePort = val => {
   const port = parseInt(val, 10);
 

@@ -7,6 +7,11 @@
  */
 exports.log = (apiName, data) => 
 {
+
+  if (!fs.existsSync('logs')){
+    fs.mkdirSync('logs');
+  }
+
   let now = new Date();
   let year = now.getFullYear();
   let day = now.getDate();
