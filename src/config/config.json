@@ -1,4 +1,4 @@
 {
-  "serverUrl" : "https://histoatlasserver.nasko.tech/",
+  "serverUrl" : "https://histoatlasserver.nasko.tech/api",
   "mapboxAccessToken" : ""
 }

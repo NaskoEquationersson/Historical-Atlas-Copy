@@ -54,14 +54,15 @@ server.on('listening', () => {
 
 server.listen(port);
 
-
+/*
 const httpsServer = https.createServer(credentials, app);
 
 httpsServer.on('error', errorHandler);
 httpsServer.on('listening', () => {
-  const address = httpsServer.address();
+  const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
   console.log('Listening on ' + bind);
 });
 
 httpsServer.listen(8443);
+*/
