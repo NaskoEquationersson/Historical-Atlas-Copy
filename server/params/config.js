@@ -25,12 +25,15 @@ exports.connectBDD = () =>
         user: dataObj["bdd"]["user"],
         password: dataObj["bdd"]["password"],
         database : dataObj["bdd"]["database"],
-        port : dataObj["bdd"]["port"]
-       }).then(conn => {
+        port : dataObj["bdd"]["port"],
+        allowPublicKeyRetrieval: true,
+        ssl: { rejectUnauthorized: false }
+      }).then(conn => {
         resolve(conn);
       })
       .catch(err => {
         console.log("Connexion rejetée");
+        console.log(err);
         console.log(dataObj);
         reject()
       });
